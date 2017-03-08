@@ -16,21 +16,21 @@ Options:
 from docopt import docopt
 import requests
 
-API_URL = 'https://jsonplaceholder.typicode.com/posts/'
+API_URL='https://jsonplaceholder.typicode.com/posts/'
 
-if __name__ == '__main__':
+if __name__=='__main__':
     ARGS = docopt(__doc__, version='1.0')
 
 if ARGS['create']:
     # POST
-    PAYLOAD = {
+    PAYLOAD={
         'title': ARGS['<title>'],
         'body': ARGS['<body>']
     }
 
-    RES = requests.post(API_URL, data=PAYLOAD)
+    RES=requests.post(API_URL, data=PAYLOAD)
 
-    if RES.status_code == 201:
+    if RES.status_code==201:
         print('Successfully Created')
         for post in RES:
             print(post)
@@ -40,8 +40,8 @@ if ARGS['create']:
 
 if ARGS['get_all']:
     # GET
-    RES = requests.get(API_URL)
-    if RES.status_code == 200:
+    RES=requests.get(API_URL)
+    if RES.status_code==200:
         print('Getting all posts...')
         for post in RES:
             print(post)
@@ -51,10 +51,10 @@ if ARGS['get_all']:
 
 if ARGS['get']:
     # GET specific
-    POST_ID = ARGS['<post_id>']
-    RES = requests.get(API_URL + POST_ID)
+    POST_ID=ARGS['<post_id>']
+    RES=requests.get(API_URL + POST_ID)
 
-    if RES.status_code == 200:
+    if RES.status_code==200:
         print('Fetching post ' + POST_ID + ' successful')
 
         for post in RES:
@@ -64,13 +64,13 @@ if ARGS['get']:
 
 if ARGS['edit']:
     # PUT
-    PAYLOAD = {
+    PAYLOAD={
         'title': ARGS['<title>'],
         'body': ARGS['<body>']
     }
-    RES = requests.put(API_URL+ARGS['<post_id>'], data=PAYLOAD)
+    RES=requests.put(API_URL+ARGS['<post_id>'], data=PAYLOAD)
 
-    if RES.status_code == 200:
+    if RES.status_code==200:
         print('Edit successful')
         for post in RES:
             print(post)
@@ -79,10 +79,10 @@ if ARGS['edit']:
 
 if ARGS['remove']:
     # DELETE
-    POST_ID = ARGS['<post_id>']
-    RES = requests.delete(API_URL+POST_ID)
+    POST_ID=ARGS['<post_id>']
+    RES=requests.delete(API_URL+POST_ID)
 
-    if RES.status_code == 200:
+    if RES.status_code==200:
         print('Post ' + POST_ID + ' successfully deleted')
     else:
         print('Error: Problem deleting post')
