@@ -1,18 +1,18 @@
 def words(words):
    try:
-       words = words.split()
-       L = {}
+       words=words.split()
+       L={}
        for word in words:
            if word.isdigit():
                if int(word) in L:
-                 L[int(word)] = L[int(word)]+1
+                 L[int(word)]=L[int(word)]+1
                else:
-                   L[int(word)] = 1
+                   L[int(word)]=1
            else:
                if word in L:
-                   L[word] = L[word]+1
+                   L[word]=L[word]+1
                else:
-                   L[word] = 1
+                   L[word]=1
        return L
    except Exception:
        return 'invalid'
